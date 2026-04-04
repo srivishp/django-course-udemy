@@ -8,7 +8,9 @@ urlpatterns = [
     # path("february", views.indexFeb)
 
     # > This is a dynamic path
-    # * <> holds an identifier
-    path("<month>", views.monthly_challenge)
+    # * <> holds an identifier within it, and the type of value it should be (str, int, etc.)
+    path("<int:month>", views.monthly_challenge_by_number),
+
+    path("<str:month>", views.monthly_challenge)
 
 ]
