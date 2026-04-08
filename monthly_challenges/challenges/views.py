@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 # this import is used to load the template and render it with the context
-from django.template.loader import render_to_string
+# from django.template.loader import render_to_string
 
 monthly_challenges = {
     "January": "This works in January!",
@@ -61,11 +61,16 @@ def monthly_challenge_by_number(request, month):
 def monthly_challenge(request, month):
     try:
         challenge_text = monthly_challenges[month.capitalize()]
-        # Returning HTML instead of just text
-        response_data = render_to_string("challenges/challenge.html", {
+        # We are using render instead of render_to_string and HttpResponse because render takes care of loading the template, rendering it with the context and returning the HttpResponse all in one step.
+        return render(request, "challenges/challenge.html", {
+            # > These are the context variables that we are passing to the template.
+            # We can use these variables in the template to display the challenge text and the month name.
+            "title": month + "'s Challenge",
             "text": challenge_text,
-            "month_name": month.capitalize()
+            "month_name": month
         })
-        return HttpResponse(response_data)
+        # Returning HTML instead of just text
+        # response_data = render_to_string("challenges/challenge.html")
+        # return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("<h1>This month is not supported!</h1>")

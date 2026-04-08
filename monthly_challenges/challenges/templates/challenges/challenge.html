@@ -1,6 +1,7 @@
 <!--
 
 Django templates contain HTML code with some special syntax that allows us to insert dynamic content.
+Generally, we don't implement Python logic here. Instead, we use the features of Django Template Language (DTL)
 
 -->
 
@@ -10,12 +11,14 @@ Django templates contain HTML code with some special syntax that allows us to in
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monthly Challenge</title>
+    <title>{{title | title}}</title>
 </head>
 
 <body>
-    <h1>This month's challenge</h1>
-    <h2>Challenge Description</h2>
+<!-- Using title feature of DTL -->
+    <h1>{{month_name | title}}</h1>
+    <!-- Pointing to the key in the context -->
+    <h2>{{text}}</h2>
 </body>
 
 </html>
