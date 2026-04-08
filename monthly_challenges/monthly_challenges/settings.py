@@ -29,8 +29,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# # These are the apps that are installed in our project.
+# > We need to add our app "challenges" to this list so that Django knows about it and can use it.
 INSTALLED_APPS = [
+    "challenges",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +56,12 @@ ROOT_URLCONF = 'monthly_challenges.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # * This is the path where Django will look for templates. We are adding the path to the templates folder in the challenges app
+        'DIRS': [
+            # ? However, since we have set APP_DIRS to True, Django will also look for templates in the templates folder of each app.
+            # ? So we don't need to add the path to the templates folder in the challenges app here. Hence we have commented it out.
+            # BASE_DIR / "challenges" / "templates"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
