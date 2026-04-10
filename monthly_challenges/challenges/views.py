@@ -11,7 +11,7 @@ monthly_challenges = {
     "April": "This works in April!",
     "May": "This works in May!",
     "June": "This works in June!",
-    "July": "This works in July!",
+    "July": None,
     "August": "This works in August!",
     "September": "This works in September!",
     "October": "This works in October!",

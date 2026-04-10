@@ -56,11 +56,13 @@ ROOT_URLCONF = 'monthly_challenges.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # * This is the path where Django will look for templates. We are adding the path to the templates folder in the challenges app
+        # * This is the path where Django will look for templates (HTML files). We are adding the path to the templates folder in the challenges app
         'DIRS': [
             # ? However, since we have set APP_DIRS to True, Django will also look for templates in the templates folder of each app.
             # ? So we don't need to add the path to the templates folder in the challenges app here. Hence we have commented it out.
             # BASE_DIR / "challenges" / "templates"
+            # # The below BASE_DIR is required howerever, because we now have a templates folder in the root directory.
+            BASE_DIR / "templates"
         ],
         'APP_DIRS': True,
         'OPTIONS': {

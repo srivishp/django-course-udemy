@@ -4,21 +4,20 @@ Django templates contain HTML code with some special syntax that allows us to in
 Generally, we don't implement Python logic here. Instead, we use the features of Django Template Language (DTL)
 
 -->
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title | title}}</title>
-</head>
+{%block page_title%}{{month_name | title}}{% endblock %}
 
-<body>
+
+{%block content%}
+{% include "challenges/includes/header.html" %}
 <!-- Using title feature of DTL -->
     <h1>{{month_name | title}}</h1>
+    {%if text is not None%}
     <!-- Pointing to the key in the context -->
     <h2>{{text}}</h2>
-</body>
-
-</html>
+    {% else %}
+    <p>No challenges available for this month. Take a break!</p>
+    {% endif %}
+{% endblock %}

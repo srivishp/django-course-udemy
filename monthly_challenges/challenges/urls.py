@@ -6,7 +6,7 @@ urlpatterns = [
     # ? These are static paths
     # path("january", views.indexJan),
     # path("february", views.indexFeb)
-    path("", views.index),  # /challenges/
+    path("", views.index, name="index"),  # /challenges/
 
     # > This is a dynamic path
     # * <> holds an identifier within it, and the type of value it should be (str, int, etc.)
