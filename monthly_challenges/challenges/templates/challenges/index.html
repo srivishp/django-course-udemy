@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Challenges</title>
+</head>
+
+<body>
+   <ul>
+    {% comment %}# We use {%} in DTL. Check docs for DTL tags. {% endcomment %}
+       {% for month in months %}
+       <li>
+        {% comment %}* Check docs for the URL tag {% endcomment %}
+       <a href="{% url 'monthly_challenge' month %}">{{ month | title }}</a>
+       </li>
+        {% comment %} We use endfor to end the block of code (for loop, in this case) in DTL {% endcomment %}
+        {% endfor %}
+   </ul>
+</body>
+
+</html>

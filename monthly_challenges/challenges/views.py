@@ -32,13 +32,11 @@ monthly_challenges = {
 #     return HttpResponse("This works in February!")
 
 def index(request):
-    list_items = ""
+
     months = list(monthly_challenges.keys())
-    for month in months:        # Using reverse function to get the URL of the month
-        month_path = reverse("monthly_challenge", args=[month])
-        list_items += f"<li><a href=\"{month_path}\">{month.capitalize()}</a></li>"
-    response_data = f"<ul>{list_items}</ul >"
-    return HttpResponse(response_data)
+    return render(request, "challenges/index.html", {
+        "months": months
+    })
 
 # > This is a dynamic view/captured value
 # * month is the identifier
